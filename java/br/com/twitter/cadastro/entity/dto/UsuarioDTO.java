@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -17,10 +18,15 @@ public class UsuarioDTO implements Serializable {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@NotNull(message = "Obrigatório")
 	private String nome;
 	
 	@Column(unique = true)
+	@NotNull(message = "Obrigatório")
 	private String email;
+	
+	@NotNull(message = "Obrigatório")
 	private String senha;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
